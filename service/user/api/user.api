@@ -1,0 +1,13 @@
+syntax = "v1"
+
+type (
+	userOneReq {
+		Id int64 `json:"id"`
+	}
+)
+
+service user-api{
+	@handler user
+	post /api/v1/user/one(userOneReq) returns ()
+
+}
