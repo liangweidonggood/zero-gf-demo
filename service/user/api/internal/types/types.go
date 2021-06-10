@@ -4,3 +4,17 @@ package types
 type UserOneReq struct {
 	Id int64 `json:"id"`
 }
+
+type LoginReq struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type LoginRes struct {
+	Id          int64  `json:"id"`
+	Name        string `json:"name"`
+	Gender      string `json:"gender"`
+	Number      string `json:"number"`
+	Username    string `json:"username"`
+	AccessToken string `json:"accessToken"`
+}

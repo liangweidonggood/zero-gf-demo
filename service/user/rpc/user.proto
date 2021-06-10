@@ -14,9 +14,23 @@ message UserInfoReply{
 
 }
 
+message UserNameReq{
+  string username = 1;
+}
+
+message userDetailRes{
+  int64 id = 1;
+  string name = 2;
+  string number = 3;
+  string gender = 4;
+  string username = 5;
+  string password = 6;
+}
+
 service user {
   //通过id查询用户信息
   rpc getUser(IdReq) returns(UserInfoReply);
 
-
+  //通过用户名查询用户
+  rpc getUserByName(UserNameReq) returns (userDetailRes);
 }

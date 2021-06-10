@@ -55,3 +55,15 @@ goctl model mysql datasource -url="root:123@tcp(192.168.230.129:3306)/gozero-boo
 ```
 curl -i -X POST http://localhost:8888/api/v1/user/one -H 'content-type: application/json' -d '{"id":1}'
 ```
+
+## 新需求
+```
+1.用户登录 生成token
+  前端第一次登录，调用授权api,生成accesstoken(2小时)和refreshtoken(7天)
+  
+2.token过期刷新token
+  accesstoken过期refreshtoken没过期调用此接口返回新的accesstoken
+  前端需要拦截token过期返回码来调用此接口
+3.业务接口
+  请求头需要带accesstoken
+```

@@ -21,7 +21,14 @@ func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
 	}
 }
 
+// 通过id查询用户信息
 func (s *UserServer) GetUser(ctx context.Context, in *user.IdReq) (*user.UserInfoReply, error) {
 	l := logic.NewGetUserLogic(ctx, s.svcCtx)
 	return l.GetUser(in)
+}
+
+// 通过用户名查询用户
+func (s *UserServer) GetUserByName(ctx context.Context, in *user.UserNameReq) (*user.UserDetailRes, error) {
+	l := logic.NewGetUserByNameLogic(ctx, s.svcCtx)
+	return l.GetUserByName(in)
 }

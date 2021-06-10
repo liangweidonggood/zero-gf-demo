@@ -16,9 +16,14 @@ import (
 type (
 	IdReq         = user.IdReq
 	UserInfoReply = user.UserInfoReply
+	UserNameReq   = user.UserNameReq
+	UserDetailRes = user.UserDetailRes
 
 	User interface {
+		// 通过id查询用户信息
 		GetUser(ctx context.Context, in *IdReq) (*UserInfoReply, error)
+		// 通过用户名查询用户
+		GetUserByName(ctx context.Context, in *UserNameReq) (*UserDetailRes, error)
 	}
 
 	defaultUser struct {
@@ -32,7 +37,14 @@ func NewUser(cli zrpc.Client) User {
 	}
 }
 
+// 通过id查询用户信息
 func (m *defaultUser) GetUser(ctx context.Context, in *IdReq) (*UserInfoReply, error) {
 	client := user.NewUserClient(m.cli.Conn())
 	return client.GetUser(ctx, in)
+}
+
+// 通过用户名查询用户
+func (m *defaultUser) GetUserByName(ctx context.Context, in *UserNameReq) (*UserDetailRes, error) {
+	client := user.NewUserClient(m.cli.Conn())
+	return client.GetUserByName(ctx, in)
 }

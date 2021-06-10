@@ -4,10 +4,32 @@ type (
 	userOneReq {
 		Id int64 `json:"id"`
 	}
+	loginReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	loginRes {
+		Id          int64  `json:"id"`
+		Name        string `json:"name"`
+		Gender      string `json:"gender"`
+		Number      string `json:"number"`
+		Username    string `json:"username"`
+		AccessToken string `json:"accessToken"`
+	}
 )
 
 service user-api{
-	@handler user
+	//用户登录
+	@handler login
+	post /api/v1/user/login(loginReq) returns (loginRes)
+}
+
+@server(
+	jwt: Auth
+)
+service user-api{
+	//请求头authorization:xxxx
+	@handler one
 	post /api/v1/user/one(userOneReq) returns ()
 
 }

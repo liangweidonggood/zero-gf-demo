@@ -112,6 +112,7 @@ func (m *defaultUserModel) FindOneByUsername(username string) (*User, error) {
 	var resp User
 	err := m.QueryRowIndex(&resp, userUsernameKey, m.formatPrimary, func(conn sqlx.SqlConn, v interface{}) (i interface{}, e error) {
 		query := fmt.Sprintf("select %s from %s where `username` = ? limit 1", userRows, m.table)
+		logx.Info(query)
 		if err := conn.QueryRow(&resp, query, username); err != nil {
 			return nil, err
 		}

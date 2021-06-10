@@ -10,4 +10,8 @@ type Config struct {
 
 	//rpc调用
 	UserRPC zrpc.RpcClientConf
+	Auth    struct {
+		AccessSecret string
+		AccessExpire int64
+	}
 }

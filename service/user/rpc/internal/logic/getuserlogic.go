@@ -35,7 +35,6 @@ func (l *GetUserLogic) GetUser(in *user.IdReq) (*user.UserInfoReply, error) {
 		return nil, err
 	}
 	return &rep, nil
-
 	//go-zero内部实现
 	/*	one, err := l.svcCtx.UserModel.FindOne(in.Id)
 		if err != nil {
