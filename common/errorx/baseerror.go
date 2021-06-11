@@ -1,6 +1,14 @@
 package errorx
 
+import (
+	"net/http"
+)
+
 const defaultCode = 1001
+
+var (
+	NoDataErr = &CodeError{Code: 404, Msg: "no data"}
+)
 
 type CodeError struct {
 	Code int    `json:"code"`
@@ -12,6 +20,12 @@ type CodeErrorResponse struct {
 	Msg  string `json:"msg"`
 }
 
+func ErrorHandler(err error) (int, interface{}) {
+	return http.StatusConflict, CodeError{
+		Code: -1,
+		Msg:  err.Error(),
+	}
+}
 func NewCodeError(code int, msg string) error {
 	return &CodeError{Code: code, Msg: msg}
 }

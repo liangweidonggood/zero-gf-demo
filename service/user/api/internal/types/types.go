@@ -2,7 +2,7 @@
 package types
 
 type UserOneReq struct {
-	Id int64 `json:"id"`
+	Id int64 `json:"id" v:"min:4"`
 }
 
 type LoginReq struct {

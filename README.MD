@@ -29,6 +29,9 @@ go mod tidy
 
 ## 新建一个rpc
 ```
+goctl template init
+模板文件位于C:\Users\Administrator\.goctl
+
 1.新建user.proto文件
 2.生成rpc代码 
   cd user/rpc

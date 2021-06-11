@@ -11,4 +11,4 @@ UserRPC:
     Key: zero-gf-demo-user.rpc
 Auth:
   AccessSecret: ad879037-c7a4-4063-9236-6bfc35d54b7f
-  AccessExpire: 20 #秒
+  AccessExpire: 2000 #秒
